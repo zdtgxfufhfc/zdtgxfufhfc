@@ -1,0 +1,38 @@
+if (AUTHORIZE_RESPONSE == BILLING_EXCEPTION) 
+     throw new BillingException("Testing Billing Exception"); 
+ 
+    if (AUTHORIZE_RESPONSE == UNAUTHORIZED) 
+    { 
+      inBillingInfo.setOk(false); 
+      inBillingInfo.setReplyMessage("You are not authorized"); 
+      return inBillingInfo; 
+    } 
+ 
+// Set IsOk and IsConfirmNeeded flags 
+    inBillingInfo.setConfirmNeeded(true); 
+    inBillingInfo.setOk(true); 
+ 
+    return inBillingInfo; 
+  } 
+ 
+  /** 
+   * seeBillingManager#confirm(BillingInfo) 
+   */ 
+  public void confirm(BillingInfo inBillingInfo) 
+      throws BillingException 
+  { 
+    if (CONFIRM_RESPONSE == EXCEPTION) 
+      throw new NullPointerException("Developer Null Pointer"); 
+ 
+    if (CONFIRM_RESPONSE == BILLING_EXCEPTION) 
+      throw new BillingException("Developer Billing Exception"); 
+  } 
+ 
+  /** 
+   * see BillingManager#reverse(BillingInfo) 
+   */ 
+  public void reverse(BillingInfo inBillingInfo) 
+      throws BillingException 
+  { 
+    if (REVERSE_RESPONSE == EXCEPTION) 
+      throw new NullPointerException("Developer Null Pointer"); 
